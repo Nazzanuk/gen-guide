@@ -1,6 +1,7 @@
 'use strict';
 
 //npm dependencies
+var path = require('path');
 var express = require('express'),
     cors = require('cors'),
     bodyParser = require('body-parser');
