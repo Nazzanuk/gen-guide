@@ -81,23 +81,6 @@ app.service('Menu', function ($state, $stateParams, $timeout) {
     };
 });
 
-app.component('heroItem', {
-    templateUrl: 'hero.html',
-    controllerAs: 'hero',
-    bindings: {
-        img: '@',
-        heading: '@'
-    },
-    controller: function controller($element, $timeout) {
-
-        var init = function init() {};
-
-        init();
-
-        _.extend(this, {});
-    }
-});
-
 app.component('contentItem', {
     templateUrl: 'content.html',
     controllerAs: 'content',
@@ -132,6 +115,23 @@ app.component('headerItem', {
             setPage: Menu.setPage,
             isCurrentPage: Menu.isCurrentPage
         });
+    }
+});
+
+app.component('heroItem', {
+    templateUrl: 'hero.html',
+    controllerAs: 'hero',
+    bindings: {
+        img: '@',
+        heading: '@'
+    },
+    controller: function controller($element, $timeout) {
+
+        var init = function init() {};
+
+        init();
+
+        _.extend(this, {});
     }
 });
 
@@ -173,7 +173,7 @@ app.controller('HomeScreen', function ($element, $timeout, $scope) {
     };
 
     var render = function render() {
-        var scaleBy = 2;
+        var scaleBy = 1;
         var w = 1200;
         var h = $(document).height();
         var div = document.querySelector('#screen');
