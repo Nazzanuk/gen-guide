@@ -3,9 +3,10 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
-    <base href="/">
+    <!--to use real urls instead of hashes uncomment below-->
+    <!--<base href="/">-->
 
-    <title>Angular Base</title>
+    <title>User Guide Generator</title>
     <title><%= title %></title>
     <meta name="description" content=""/>
 
@@ -16,6 +17,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="public/lib.css"/>
     <link rel="stylesheet" href="public/app.css"/>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/medium-editor/latest/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css" type="text/css" media="screen" charset="utf-8">
 
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,200italic,300,300italic,600,400italic,600italic,700,700italic,900,900italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 
@@ -28,6 +31,8 @@
 <!-- screen contents -->
 <div ui-view></div>
 
+<img src="" alt="">
+
 
 <script type="text/ng-template" id="content.html">
     <div class="content">
@@ -37,21 +42,21 @@
     </div>
 </script>
 <script type="text/ng-template" id="header.html">
-    <div class="header">
-        <div class="container">
-            <strong>Angular Base</strong>
+    <!--<div class="header">-->
+        <!--<div class="container">-->
+            <!--<strong>Angular Base</strong>-->
 
-            <div class="header-menu">
-                <div class="menu-item"
-                     ng-repeat="page in header.getPages()"
-                     ng-click="header.setPage(page.slug)"
-                     ng-class="{active:header.isCurrentPage(page.slug)}"
-                >{{page.name}}</div>
-            </div>
-        </div>
+            <!--<div class="header-menu">-->
+                <!--<div class="menu-item"-->
+                     <!--ng-repeat="page in header.getPages()"-->
+                     <!--ng-click="header.setPage(page.slug)"-->
+                     <!--ng-class="{active:header.isCurrentPage(page.slug)}"-->
+                <!--&gt;{{page.name}}</div>-->
+            <!--</div>-->
+        <!--</div>-->
 
 
-    </div>
+    <!--</div>-->
 </script>
 <script type="text/ng-template" id="hero.html">
     <div class="hero">
@@ -75,26 +80,56 @@
 <script type="text/ng-template" id="home-screen.html">
     <div screen="home">
 
-        <!-- one way pass values to component -->
-        <hero-item
-                img="https://unsplash.it/1200/500/?random"
-                heading="Welcome to Angular Base"
-        ></hero-item>
+        <div class="split">
+            <div class="split-content ">
+                <h2 contenteditable>
+                    <div class="pull-right remove-guide" data-html2canvas-ignore ng-click="render()"><i class="fa fa-download"></i></div>
+                    Homepage
+                </h2>
+                <div contenteditable class="editable">
 
-        <content-item>
-            <content>
-                <h1>What is this?</h1>
+                    <hr>
 
-                <p>
-                    Angular base is a project developed by
-                    <a href="#">Nathan Nelson</a> to help get started with JavaScript, ES6 and single page app structure in Angular 1.5.
-                </p>
-            </content>
-        </content-item>
+                    <p>This is the Hewaar homepage. The homepage provides a content rich screen which allows users to easily access each part of the portal.</p>
+
+                    <p>Some of the content on this page is dependent on the currently logged in user.</p>
+                </div>
+
+                <div class="pull-right">
+                </div>
+                <h2>
+                    <div class="pull-right add-guide" data-html2canvas-ignore ng-click="addGuide()">+</div>
+                    Guide
+                </h2>
+
+                <hr>
+
+                <div class="guide-item" ng-repeat="guide in getGuides() track by $index">
+
+                    <div class="pull-right remove-guide" data-html2canvas-ignore ng-click="removeGuide(guide)"><i class="fa fa-times"></i></div>
+                    <div class="item-number">{{$index + 1}}</div>
+                    <div class="item-title" contenteditable editable ng-model="guide.title"></div>
+                    <div class="item-content" contenteditable editable ng-model="guide.content"></div>
+                </div>
+            </div>
+
+            <div class="split-image">
+                <input type="file" name="userprofile_picture"  id="filePhoto" />
+
+                <div class="guide-number draggable" ng-repeat="guide in getGuides() track by $index">{{$index + 1}}</div>
+
+                <img class="image-web" src=""/>
+            </div>
+        </div>
 
     </div>
 </script>
+
+<script src="//cdn.jsdelivr.net/medium-editor/latest/js/medium-editor.min.js"></script>
 <script src="public/lib.js"></script>
+<script src="http://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.svg.min.js"></script>
 <script src="public/app.js"></script>
 
 </body>

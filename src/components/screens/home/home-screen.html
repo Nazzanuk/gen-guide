@@ -1,22 +1,47 @@
 <script type="text/ng-template" id="home-screen.html">
     <div screen="home">
 
-        <!-- one way pass values to component -->
-        <hero-item
-                img="https://unsplash.it/1200/500/?random"
-                heading="Welcome to Angular Base"
-        ></hero-item>
+        <div class="split">
+            <div class="split-content ">
+                <h2 contenteditable>
+                    <div class="pull-right remove-guide" data-html2canvas-ignore ng-click="render()"><i class="fa fa-download"></i></div>
+                    Homepage
+                </h2>
+                <div contenteditable class="editable">
 
-        <content-item>
-            <content>
-                <h1>What is this?</h1>
+                    <hr>
 
-                <p>
-                    Angular base is a project developed by
-                    <a href="#">Nathan Nelson</a> to help get started with JavaScript, ES6 and single page app structure in Angular 1.5.
-                </p>
-            </content>
-        </content-item>
+                    <p>This is the Hewaar homepage. The homepage provides a content rich screen which allows users to easily access each part of the portal.</p>
+
+                    <p>Some of the content on this page is dependent on the currently logged in user.</p>
+                </div>
+
+                <div class="pull-right">
+                </div>
+                <h2>
+                    <div class="pull-right add-guide" data-html2canvas-ignore ng-click="addGuide()">+</div>
+                    Guide
+                </h2>
+
+                <hr>
+
+                <div class="guide-item" ng-repeat="guide in getGuides() track by $index">
+
+                    <div class="pull-right remove-guide" data-html2canvas-ignore ng-click="removeGuide(guide)"><i class="fa fa-times"></i></div>
+                    <div class="item-number">{{$index + 1}}</div>
+                    <div class="item-title" contenteditable editable ng-model="guide.title"></div>
+                    <div class="item-content" contenteditable editable ng-model="guide.content"></div>
+                </div>
+            </div>
+
+            <div class="split-image">
+                <input type="file" name="userprofile_picture"  id="filePhoto" />
+
+                <div class="guide-number draggable" ng-repeat="guide in getGuides() track by $index">{{$index + 1}}</div>
+
+                <img class="image-web" src=""/>
+            </div>
+        </div>
 
     </div>
 </script>
