@@ -23,7 +23,7 @@ app.controller('HomeScreen', ($element, $timeout, $scope) => {
     };
 
     var render = () => {
-        var scaleBy = 1;
+        var scaleBy = 1.5;
         var w = 1200;
         var h = $(document).height();
         var div = document.querySelector('#screen');
