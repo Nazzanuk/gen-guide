@@ -1,5 +1,7 @@
 'use strict';
 
+process.env.PWD = process.cwd();
+
 //npm dependencies
 var path = require('path');
 var express = require('express'),
@@ -16,10 +18,12 @@ var app = express(),
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, '../release')));
-app.use(express.static('../release'))
-app.use(express.static('release'))
-app.use(express.static('./release'))
+
+app.use(express.static(path.join(process.env.PWD, '../release')));
+//app.use(express.static(path.join(__dirname, '../release')));
+//app.use(express.static('../release'))
+//app.use(express.static('release'))
+//app.use(express.static('./release'))
 //app.use('/release', express.static(path.join(__dirname, 'release')))
 app.set('view engine', 'ejs');
 
